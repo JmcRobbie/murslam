@@ -1,2 +1,9 @@
-# murslam
-A ros package that implements slam for use on the 2019 MUR e car
+# MUR Slam 
+A ros package that implements slam for use on the 2019 MUR driverless car. 
+
+### Dependencies
+This package is designed to be interfaced with the AMZ fssim package. (https://github.com/AMZ-Driverless/fssim). 
+
+The repo has been forked and may or may not have diverged. The fork is held here: https://github.com/JmcRobbie/fssim
+
+This package is developed to work with the melodic distro of ROS. Make sure that is what you have installed. 
