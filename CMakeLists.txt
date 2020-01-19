@@ -4,13 +4,21 @@ project(murslam)
 add_definitions(-std=c++11)
 
 ## Find catkin and any catkin packages
-find_package(catkin REQUIRED COMPONENTS roscpp rospy std_msgs genmsg geometry_msgs fssim_common)
+find_package(catkin REQUIRED COMPONENTS 
+    roscpp 
+    rospy
+    std_msgs 
+    genmsg 
+    geometry_msgs 
+    fssim_common
+    sensor_msgs
+    )
 
 ## Declare ROS messages and services
 
 
 ## Generate added messages and services
-generate_messages(DEPENDENCIES std_msgs fssim_common)
+generate_messages(DEPENDENCIES std_msgs fssim_common sensor_msgs)
 
 
 
