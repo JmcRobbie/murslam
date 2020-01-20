@@ -6,13 +6,16 @@
 #include "sensor_msgs/PointCloud2.h"
 
 #define rate 1000
+#define looprate 10 
 
-void basiccallback(const sensor_msgs::PointCloud2::ConstPtr& msg);
+void lidarCallback(const sensor_msgs::PointCloud2::ConstPtr& msg);
+void cameraCallback(const sensor_msgs::PointCloud2::ConstPtr& msg);
 
 int main(int argc, char **argv){
     ros::init(argc, argv, "slam");
-
+    /* Node handle for accessing ros core */  
     ros::NodeHandle n;
+
     /* Publishers*/
 
     ros::Publisher slam_pub = n.advertise<fssim_common::Track>("slam", rate);
@@ -20,11 +23,14 @@ int main(int argc, char **argv){
 
     /*Listeners*/
 
-    ros::Subscriber lidar_subs = n.subscribe("/lidar/cones",rate,basiccallback);
-    ros::Subscriber camera_sub = n.subscribe("/camera/cones",rate,basiccallback);
+    ros::Subscriber lidar_subs = n.subscribe("/lidar/cones",rate,lidarCallback);
+    ros::Subscriber camera_sub = n.subscribe("/camera/cones",rate,cameraCallback);
 
-    ros::Rate loop_rate(10);
+    ros::Rate loop_rate(looprate);
+ 
     int count = 0;
+
+
     while(ros::ok()){
       std_msgs::String msg;
       std::stringstream ss;
@@ -38,7 +44,10 @@ int main(int argc, char **argv){
     }
 }
 
-void basiccallback(const sensor_msgs::PointCloud2::ConstPtr& msg){
+void lidarCallback(const sensor_msgs::PointCloud2::ConstPtr& msg){
+  /* Placeholder function, will be replaced later.*/
+  }
 
+void CameraCallback(const sensor_msgs::PointCloud2::ConstPtr& msg){
 /* Placeholder function, will be replaced later.*/
 }
