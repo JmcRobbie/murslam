@@ -49,7 +49,19 @@ def callback(data):
 
 
 def listener():
+    topics =slamTopics() 
+
+    sense = racecarSensors(topics)
+
     rospy.init_node('slam', anonymous=False)
 
-    rospy.Subscriber("chatter", pc2, point_cloud_callback)
+    '''
+    Call subscribers to various important nodes
+    '''
+    rospy.Subscriber(sense.lidarTopic, pc2, sense.lidarCallback)
+    rospy.Subscriber(sense.cameraCallback, pc2, sense.cameraCloud)
+    '''
+    Slam begin!
+    '''    
+        
     rospy.spin()
