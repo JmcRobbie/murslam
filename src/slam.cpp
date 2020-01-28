@@ -9,7 +9,7 @@
 #define looprate 10 
 
 void lidarCallback(const sensor_msgs::PointCloud2::ConstPtr& msg);
-void cameraCallback(const sensor_msgs::PointCloud2::ConstPtr& msg);
+void CameraCallback(const sensor_msgs::PointCloud2::ConstPtr& msg);
 
 int main(int argc, char **argv){
     ros::init(argc, argv, "slam");
@@ -24,7 +24,7 @@ int main(int argc, char **argv){
     /*Listeners*/
 
     ros::Subscriber lidar_subs = n.subscribe("/lidar/cones",rate,lidarCallback);
-    ros::Subscriber camera_sub = n.subscribe("/camera/cones",rate,cameraCallback);
+    ros::Subscriber camera_sub = n.subscribe("/camera/cones",rate,CameraCallback);
 
     ros::Rate loop_rate(looprate);
  
