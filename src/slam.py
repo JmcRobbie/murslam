@@ -33,7 +33,8 @@ def main():
     '''
     Slam begin!
     '''    
-
+    runner = EkfSlam(sense)
+    runner.doEKFSlam()
     '''
     Rospy spin the node 
     '''

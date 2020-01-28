@@ -8,6 +8,7 @@ Author: Jack McRobbie
 '''
 import numpy as np
 import rospy 
+import math 
 
 class EkfSlam:
     
@@ -15,7 +16,10 @@ class EkfSlam:
         self.data = sensors 
     
     
-    def doSlam(self):
-        while(True):
-            mean = np.mean(self.data.cameraCloud)
-            rospy.loginfo(mean)
+    def doEKFSlam(self):
+        '''
+        Main ekfslam loop, will run until the node is terminated.
+        '''
+        
+        while not rospy.is_shutdown():
+            print "hello world" 
