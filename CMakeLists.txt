@@ -13,12 +13,13 @@ find_package(catkin REQUIRED COMPONENTS
     fssim_common
     sensor_msgs
     )
+catkin_python_setup()
 
 ## Declare ROS messages and services
 
 
 ## Generate added messages and services
-generate_messages(DEPENDENCIES std_msgs fssim_common sensor_msgs)
+# generate_messages(DEPENDENCIES std_msgs fssim_common sensor_msgs)
 
 
 
@@ -28,6 +29,7 @@ catkin_package()
 ## Build talker and listener
 include_directories(include ${catkin_INCLUDE_DIRS})
 
-add_executable(slam src/slam.cpp)
-target_link_libraries(slam ${catkin_LIBRARIES})
-add_dependencies(slam slam_cpp)
+# To be included if cpp slam is used, currently deleted from repo
+# add_executable(slam src/slam.cpp)
+# target_link_libraries(slam ${catkin_LIBRARIES})
+# add_dependencies(slam slam_cpp)

@@ -1,5 +1,6 @@
-#! usr/bin/env/python
-from slam import racecarSensors
+ #!/usr/bin/env python
+ 
+import rospy 
 '''
 EKF slam implementation for MUR driverless
 
@@ -8,7 +9,7 @@ Author: Jack McRobbie
 import numpy as np
 import rospy 
 
-class ekfslam:
+class EkfSlam:
     
     def __init__(self,sensors):
         self.data = sensors 
