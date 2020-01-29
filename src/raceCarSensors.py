@@ -5,7 +5,7 @@ Jack McRobbie
 
 '''
 
-import numpy as np 
+import numpy as np
 
 import rospy
 from std_msgs.msg import String
@@ -17,25 +17,33 @@ class racecarSensors:
     '''
     A class that manages callbacks and sensors states for the racecar. 
     '''
-    def __init__(self,topics):
+
+    def __init__(self, topics):
         self.lidarTopic = topics.lidarCloudTopic
         self.cameraTopic = topics.cameraCloudTopic
         print type(self.lidarTopic)
         print self.cameraTopic
-        self.lidarCloud = np.array([]) 
+        self.lidarCloud = np.array([])
         self.cameraCloud = np.array([])
-    
-    def lidarCallback(self, data):    
+        self.driveCmd = []
+
+    def lidarCallback(self, data):
         dat = pc2.read_points(data,
-                                field_names=("x", "y", "z"),
-                                skip_nans=True)
+                              field_names=("x", "y", "z"),
+                              skip_nans=True)
         arr = list(dat)
         self.lidarCloud = np.array(arr)
 
-    def cameraCallback(self,data):
+    def cameraCallback(self, data):
         dat = pc2.read_points(data,
-                        field_names=("x", "y", "z"),
-                        skip_nans=True)
+                              field_names=("x", "y", "z"),
+                              skip_nans=True)
         arr = list(dat)
         self.cameraCloud = np.array(arr)
-        print(np.size(self.lidarCloud))
+
+    def driveCmdCallback(self, data):
+        """
+        Dummy function to be used as drive cmd  
+        """
+        self.driveCmd = data
+        pass

@@ -6,7 +6,7 @@ Python implementation of ekfslam for mapping of racecourse and for localizing a 
 Author: Jack McRobbie
 '''
 
-import numpy as np 
+import numpy as np
 
 import rospy
 from std_msgs.msg import String
@@ -18,8 +18,8 @@ from raceCarSensors import racecarSensors
 from slamTopics import slamTopics
 
 
-def main(): 
-    topics = slamTopics() 
+def main():
+    topics = slamTopics()
 
     sense = racecarSensors(topics)
 
@@ -32,13 +32,14 @@ def main():
     rospy.Subscriber("/camera/cones", PointCloud2, sense.cameraCallback)
     '''
     Slam begin!
-    '''    
+    '''
     runner = EkfSlam(sense)
     runner.doEKFSlam()
     '''
     Rospy spin the node 
     '''
     rospy.spin()
-    
+
+
 if __name__ == "__main__":
     main()
